@@ -29,18 +29,20 @@ do GitHub Pages, sem ajustes adicionais.
 
 ## Assistente de vendas (chat.js)
 
-O widget de chat já está no site (botão flutuante acima do botão do WhatsApp),
-mas ainda não está ligado a um back-end. Quando tiver o endereço do Worker
-(ex.: `https://agente-vendas.seu-subdominio.workers.dev`), preencha a
-constante `ASSISTENTE_URL_BACKEND` no início do arquivo `js/chat.js`.
+O widget de chat já está no site (botão flutuante acima do botão do WhatsApp)
+e está ligado ao back-end definido na constante `ASSISTENTE_URL_BACKEND`, no
+início do arquivo `js/chat.js`
+(`https://site-empresa-fs.felipesilvasjbv.workers.dev`).
 
-O widget envia um POST em JSON no formato `{ mensagem, historico }` e espera
-uma resposta em JSON com um campo `resposta` (aceita também `reply` ou
-`mensagem`) contendo o texto a exibir. Se o back-end responder em outro
-formato, ajuste a leitura da resposta em `js/chat.js`.
+O widget envia um POST em JSON no formato `{ messages: [{ role, content }] }`
+(histórico completo da conversa, com `role` `"user"` ou `"assistant"`) e
+espera uma resposta em JSON com um campo `resposta` contendo o texto a
+exibir. Se o back-end responder em outro formato, ajuste a leitura da
+resposta em `js/chat.js`.
 
-Enquanto `ASSISTENTE_URL_BACKEND` estiver vazio, o widget mostra uma mensagem
-padrão direcionando o visitante para o WhatsApp.
+Se `ASSISTENTE_URL_BACKEND` ficar vazio, ou se o back-end estiver fora do ar,
+o widget mostra uma mensagem padrão direcionando o visitante para o
+WhatsApp.
 
 ## Dados a preencher
 

@@ -1,7 +1,7 @@
 // ===== Assistente de vendas (widget de chat) =====
 // Preencha esta constante com o endereço do Worker (back-end do assistente)
 // quando ele estiver pronto. Ex.: "https://agente-vendas.seu-subdominio.workers.dev"
-const ASSISTENTE_URL_BACKEND = "";
+const ASSISTENTE_URL_BACKEND = "https://site-empresa-fs.felipesilvasjbv.workers.dev";
 
 const ASSISTENTE_MENSAGEM_INICIAL =
   "Olá! Sou o assistente virtual da FS Consultoria Empresarial. Como posso ajudar você hoje?";
@@ -115,10 +115,15 @@ const ASSISTENTE_MENSAGEM_INDISPONIVEL =
     const indicador = mostrarDigitando();
 
     try {
+      const mensagens = historico.map((item) => ({
+        role: item.autor === "usuario" ? "user" : "assistant",
+        content: item.texto,
+      }));
+
       const resposta = await fetch(ASSISTENTE_URL_BACKEND, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mensagem: texto, historico: historico }),
+        body: JSON.stringify({ messages: mensagens }),
       });
 
       if (!resposta.ok) throw new Error("Resposta HTTP " + resposta.status);
