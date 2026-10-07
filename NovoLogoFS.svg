@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" role="img" aria-label="Nova logomarca FS Consultoria Empresarial">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&amp;display=swap');
+    .letras {
+      font-family: "Cinzel", "Times New Roman", serif;
+      font-weight: 700;
+      fill: #d9a72e;
+      letter-spacing: 6px;
+    }
+    .sub {
+      font-family: "Cinzel", "Times New Roman", serif;
+      font-weight: 600;
+      fill: #d9a72e;
+      letter-spacing: 8px;
+    }
+  </style>
+
+  <rect x="0" y="0" width="560" height="300" fill="#0f2a4a" />
+
+  <text x="280" y="195" text-anchor="middle" class="letras" font-size="165">FS</text>
+  <text x="280" y="228" text-anchor="middle" class="sub" font-size="18">CONSULTORIA</text>
+</svg>
