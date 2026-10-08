@@ -454,7 +454,7 @@
       </ul>
     </div>
 
-    <form class="contato-form revelar" id="formulario-contato">
+    <form class="contato-form revelar" id="formulario-contato" action="https://formspree.io/f/mbgdgaoe" method="POST">
       <div class="campo">
         <label for="nome">Nome</label>
         <input type="text" id="nome" name="nome" required />
@@ -467,10 +467,12 @@
         <label for="mensagem">Mensagem</label>
         <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
       </div>
+      <!-- Campo escondido contra robôs (o Formspree descarta envios que o preenchem) -->
+      <input type="text" name="_gotcha" class="campo-oculto" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <button type="submit" class="botao botao-primario">Enviar mensagem</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       <p class="form-aviso">
-        Este formulário abre uma mensagem de e-mail no seu programa padrão. Para
-        resposta mais rápida, prefira o WhatsApp.
+        Respondemos pelo e-mail informado. Para resposta mais rápida, prefira o WhatsApp.
       </p>
     </form>
   </div>

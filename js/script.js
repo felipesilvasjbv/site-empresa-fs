@@ -78,20 +78,48 @@ if (anoAtual) {
   anoAtual.textContent = new Date().getFullYear();
 }
 
-// ===== Formulário de contato (abre o e-mail do visitante) =====
+// ===== Formulário de contato (envia pelo Formspree para o e-mail da empresa) =====
 const formularioContato = document.getElementById("formulario-contato");
 
 if (formularioContato) {
-  formularioContato.addEventListener("submit", (evento) => {
+  const statusEnvio = document.getElementById("form-status");
+  const botaoEnviar = formularioContato.querySelector('button[type="submit"]');
+  const textoBotao = botaoEnviar.textContent;
+
+  formularioContato.addEventListener("submit", async (evento) => {
     evento.preventDefault();
 
     const nome = document.getElementById("nome").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const mensagem = document.getElementById("mensagem").value.trim();
+    const dados = new FormData(formularioContato);
+    // Assunto do e-mail recebido; o campo "email" vira o "Responder para"
+    dados.append("_subject", `Contato pelo site — ${nome}`);
 
-    const assunto = encodeURIComponent(`Contato pelo site — ${nome}`);
-    const corpo = encodeURIComponent(`Nome: ${nome}\nE-mail: ${email}\n\nMensagem:\n${mensagem}`);
+    botaoEnviar.disabled = true;
+    botaoEnviar.textContent = "Enviando...";
+    statusEnvio.className = "form-status";
+    statusEnvio.textContent = "";
 
-    window.location.href = `mailto:felipesilvasjbv@gmail.com?subject=${assunto}&body=${corpo}`;
+    try {
+      const resposta = await fetch(formularioContato.action, {
+        method: "POST",
+        body: dados,
+        headers: { Accept: "application/json" },
+      });
+
+      if (!resposta.ok) throw new Error("Resposta HTTP " + resposta.status);
+
+      formularioContato.reset();
+      statusEnvio.classList.add("sucesso");
+      statusEnvio.textContent = "Mensagem enviada! Em breve entraremos em contato.";
+    } catch (erro) {
+      console.error("Falha ao enviar o formulário:", erro);
+      statusEnvio.classList.add("erro");
+      statusEnvio.innerHTML =
+        'Não foi possível enviar agora. Tente novamente ou fale pelo ' +
+        '<a href="https://wa.me/5519997485355" target="_blank" rel="noopener">WhatsApp</a>.';
+    } finally {
+      botaoEnviar.disabled = false;
+      botaoEnviar.textContent = textoBotao;
+    }
   });
 }

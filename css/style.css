@@ -786,6 +786,45 @@ section {
   text-align: center;
 }
 
+/* Campo armadilha contra robôs: fora da tela, invisível para o visitante */
+.campo-oculto {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* Mensagem de retorno do envio */
+.form-status {
+  margin-top: 14px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status.sucesso {
+  color: #1e7a46;
+}
+
+.form-status.erro {
+  color: #b3261e;
+}
+
+.form-status a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.contato-form .botao:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
 /* ===== Rodapé ===== */
 .rodape {
   background-color: var(--azul-marinho-escuro);
