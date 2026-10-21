@@ -415,21 +415,6 @@ section {
   object-fit: cover;
 }
 
-.hero-imagem .etiqueta {
-  position: absolute;
-  bottom: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--texto-claro);
-  color: var(--azul-marinho);
-  padding: 12px 24px;
-  border-radius: 50px;
-  box-shadow: var(--sombra);
-  font-weight: 700;
-  font-size: 0.9rem;
-  white-space: nowrap;
-}
-
 /* ===== Sobre ===== */
 .sobre {
   position: relative;
@@ -531,6 +516,20 @@ section {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+}
+
+/* Logomarcas: exibidas inteiras, sem corte, sobre fundo branco */
+.servico-imagem-logo {
+  background-color: #fff;
+}
+
+.servico-imagem-logo img {
+  object-fit: contain;
+}
+
+/* Retratos: enquadra o rosto e o tronco */
+.servico-imagem-retrato img {
+  object-position: center 22%;
 }
 
 .servico-card:hover .servico-imagem img {
@@ -1030,11 +1029,6 @@ section {
 
   .hero-imagem img {
     height: 250px;
-  }
-
-  .hero-imagem .etiqueta {
-    font-size: 0.7rem;
-    padding: 8px 14px;
   }
 
   .servicos-grid {
