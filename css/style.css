@@ -981,7 +981,7 @@ section {
   .hero-imagem .foto-quadro {
     max-width: 230px;
     margin-left: 0;
-    margin-top: 90px;
+    margin-top: 175px;
   }
 
   .hero-imagem img {
@@ -1019,12 +1019,12 @@ section {
   }
 
   .hero-imagem {
-    min-height: 360px;
+    min-height: 400px;
   }
 
   .hero-imagem .foto-quadro {
     max-width: 190px;
-    margin-top: 60px;
+    margin-top: 100px;
   }
 
   .hero-imagem img {
