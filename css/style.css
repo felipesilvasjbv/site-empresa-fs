@@ -527,11 +527,6 @@ section {
   object-fit: contain;
 }
 
-/* Retratos: enquadra o rosto e o tronco */
-.servico-imagem-retrato img {
-  object-position: center 22%;
-}
-
 .servico-card:hover .servico-imagem img {
   transform: scale(1.08);
 }
