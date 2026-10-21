@@ -463,6 +463,11 @@ section {
   margin-top: 24px;
 }
 
+/* Com número ímpar de credenciais, a última ocupa a linha inteira */
+.credencial:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .credencial {
   background-color: var(--fundo);
   border: 1px solid var(--borda);
